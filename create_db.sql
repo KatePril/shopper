@@ -7,8 +7,7 @@ CREATE TABLE IF NOT EXISTS customer
     last_name character varying(50) NOT NULL,
     email character varying(50) NOT NULL UNIQUE,
     phone_number character varying(20) NOT NULL,
-    password character varying(50) NOT NULL,
-    salt character varying(20) NOT NULL
+    password character varying(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS shop
@@ -17,7 +16,7 @@ CREATE TABLE IF NOT EXISTS shop
     name character varying(70) NOT NULL UNIQUE,
     description text,
     email character varying(50) NOT NULL,
-    phone_number character varying(50) NOT NULL
+    phone_number character varying(50) NOT NULL,
     category_id serial NOT NULL
 );
 

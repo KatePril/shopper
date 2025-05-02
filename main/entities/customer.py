@@ -1,5 +1,5 @@
 class Customer:
-    def __init__(self, first_name, last_name, email, phone_number, password, salt, customer_id=None):
+    def __init__(self, first_name, last_name, email, phone_number, password, customer_id=None):
         if customer_id is not None:
             self.customer_id = customer_id
         self.first_name = first_name
@@ -7,7 +7,6 @@ class Customer:
         self.email = email
         self.phone_number = phone_number
         self.password = password
-        self.salt = salt
 
     @classmethod
     def from_dict(cls, customer_dict):
@@ -17,7 +16,6 @@ class Customer:
             customer_dict['email'],
             customer_dict['phone_number'],
             customer_dict['password'],
-            customer_dict['salt'],
             customer_dict['customer_id']
         )
 
@@ -44,6 +42,5 @@ class Customer:
             self.last_name == other.last_name and
             self.email == other.email and
             self.phone_number == other.phone_number and
-            self.password == other.password and
-            self.salt == other.salt
+            self.password == other.password
         )
