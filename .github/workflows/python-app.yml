@@ -1,0 +1,31 @@
+name: CI pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  install-dependencies-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install pipenv
+      run: pip install pipenv
+
+    - name: Install dependencies with Pipenv
+      run: |
+        pipenv install
+
+    - name: Run tests with unittest
+      run: |
+        pipenv run python -m unittest discover -s tests -v
