@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in & Sign up</title>
+</head>
+<body>
+    <h1>Sign in</h1>
+    <form method="POST">
+        <input type="hidden" name="form_type" value="sign_in">
+        <label>Email:</label>
+        <input type="email" name="login_email" required><br><br>
+        <label>Password:</label>
+        <input type="password" name="login_password" required><br><br>
+        <input type="submit" value="Sign in">
+    </form>
+
+    <h1>Sign up</h1>
+    <form method="POST">
+        <input type="hidden" name="form_type" value="sign_up">
+        <label>First name:</label>
+        <input type="text" name="register_first_name" required><br><br>
+        <label>Last name:</label>
+        <input type="text" name="register_last_name" required><br><br>
+        <label>Email:</label>
+        <input type="email" name="register_email" required><br><br>
+        <label>Phone Number:</label>
+        <input type="tel" name="register_phone_number" required pattern="[0-9]{10}" placeholder="e.g. 1234567890"><br><br>
+        <label>Password:</label>
+        <input type="password" name="register_password" required><br><br>
+        <input type="submit" value="Sign up">
+    </form>
+
+</body>
+</html>
