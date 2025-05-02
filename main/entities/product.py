@@ -1,6 +1,7 @@
 class Product:
-    def __init__(self, product_id, name, description, price, quantity, shop_id):
-        self.product_id = product_id
+    def __init__(self, name, description, price, quantity, shop_id, product_id=None):
+        if product_id is not None:
+            self.product_id = product_id
         self.name = name
         self.description = description
         self.price = price
@@ -19,7 +20,7 @@ class Product:
         )
 
     def to_dict(self):
-        return {
+        product = {
             'product_id': self.product_id,
             'name': self.name,
             'description': self.description,
@@ -27,6 +28,9 @@ class Product:
             'quantity': self.quantity,
             'shop_id': self.shop_id
         }
+        if self.product_id is not None:
+            product['product_id'] = self.product_id
+        return product
 
     def __eq__(self, other):
         if not isinstance(other, Product):

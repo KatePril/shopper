@@ -1,6 +1,7 @@
 class ShopCategory:
-    def __init__(self, shop_category_id, name, description):
-        self.shop_category_id = shop_category_id
+    def __init__(self, name, description, shop_category_id=None):
+        if shop_category_id is not None:
+            self.shop_category_id = shop_category_id
         self.name = name
         self.description = description
 
@@ -13,11 +14,14 @@ class ShopCategory:
         )
 
     def to_dict(self):
-        return {
+        shop_category = {
             'shop_category_id': self.shop_category_id,
             'name': self.name,
             'description': self.description
         }
+        if self.shop_category_id is not None:
+            shop_category['shop_category_id'] = self.shop_category_id
+        return shop_category
 
     def __eq__(self, other):
         if not isinstance(other, ShopCategory):

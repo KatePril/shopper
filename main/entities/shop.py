@@ -1,6 +1,7 @@
 class Shop:
-    def __init__(self, shop_id, name, description, email, phone_number, category_id):
-        self.shop_id = shop_id
+    def __init__(self, name, description, email, phone_number, category_id, shop_id):
+        if shop_id is not None:
+            self.shop_id = shop_id
         self.name = name
         self.description = description
         self.email = email
@@ -9,7 +10,7 @@ class Shop:
 
     @classmethod
     def from_dict(cls, shop_dict):
-        return  cls(
+        return cls(
             shop_dict['shop_id'],
             shop_dict['name'],
             shop_dict['description'],
@@ -19,14 +20,16 @@ class Shop:
         )
 
     def to_dict(self):
-        return {
-            'shop_id': self.shop_id,
+        shop = {
             'name': self.name,
             'description': self.description,
             'email': self.email,
             'phone_number': self.phone_number,
             'category_id': self.category_id
         }
+        if self.shop_id is not None:
+            shop['shop_id'] = self.shop_id
+        return shop
 
     def __eq__(self, other):
         if not isinstance(other, Shop):
